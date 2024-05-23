@@ -1,0 +1,24 @@
+{% extends 'myapp/index.html' %}
+<!--  -->
+{% block title %} POST {% endblock %}
+<!--  -->
+
+<!--  -->
+{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}" />
+<body>
+  <div id="add-book" class="form-container">
+    <form action="/books/" method="post" enctype="multipart/form-data">
+      <h2>Add a new book</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" class="form-input" />
+      <label for="desc">Description:</label>
+      <textarea id="desc" name="desc" class="form-input"></textarea>
+      <label for="cover">Cover:</label>
+      <input type="file" id="cover" name="cover" class="form-input" />
+      <input type="submit" value="Submit" class="form-submit" />
+    </form>
+  </div>
+</body>
+<script></script>
+{% endblock %}

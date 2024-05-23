@@ -1,21 +1,29 @@
 body {
-  background-color: rgb(107, 107, 103);
-  font-family: sans-serif;
-  font-size: 50px;
-  color: black;
+  background-color: #6b6b67;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.25rem;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
 }
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  white-space: 30px;
+  align-items: center;
   background-color: #333;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 nav ul {
   display: flex;
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -24,31 +32,33 @@ nav ul li {
   margin-right: 20px;
 }
 
+nav ul li:last-child {
+  margin-right: 0;
+}
+
 nav ul li a {
   text-decoration: none;
-  color: white;
+  color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
   background-color: #4caf50;
+  transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
-  background-color: #3e8e41;
-}
-
+nav ul li a:hover,
 nav ul li a.active {
   background-color: #3e8e41;
-  color: white;
 }
 
 nav button {
   background-color: #4caf50;
-  color: white;
+  color: #fff;
   padding: 14px 20px;
   margin-left: 10px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 nav button:hover {
@@ -57,4 +67,45 @@ nav button:hover {
 
 nav button:active {
   background-color: #2e6c40;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0; /* Increased padding for better spacing */
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem; /* Slightly increased font size */
+  border-top: 2px solid #4caf50; /* Added a top border for a nice accent */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1200px; /* Limit the maximum width */
+  margin: 0 auto; /* Center the content */
+  padding: 0 20px; /* Add padding for better spacing on smaller screens */
+}
+
+.footer-content p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.footer-content a {
+  color: #4caf50; /* Change link color to match the accent */
+  text-decoration: none;
+  font-weight: bold; /* Make links bold for better visibility */
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+  color: #fff; /* Change hover color for better contrast */
 }
