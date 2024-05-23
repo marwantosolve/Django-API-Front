@@ -7,18 +7,31 @@
 {% block content %} {% load static %}
 <link rel="stylesheet" href="{% static 'css/post.css' %}" />
 <body>
-  <div id="add-book" class="form-container">
-    <form action="/books/" method="post" enctype="multipart/form-data">
+  <div class="form-container">
+    <form id="add-book" enctype="multipart/form-data">
       <h2>Add a new book</h2>
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" class="form-input" />
+      <input type="text" id="name" name="name" class="form-input" required />
       <label for="desc">Description:</label>
-      <textarea id="desc" name="desc" class="form-input"></textarea>
-      <label for="cover">Cover:</label>
-      <input type="file" id="cover" name="cover" class="form-input" />
+      <textarea id="desc" name="desc" class="form-input" required></textarea>
       <input type="submit" value="Submit" class="form-submit" />
     </form>
   </div>
 </body>
-<script></script>
+<script>
+  const form = document.getElementById("add-book");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+    fetch("http://127.0.0.1:8000/books/", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  });
+</script>
 {% endblock %}
