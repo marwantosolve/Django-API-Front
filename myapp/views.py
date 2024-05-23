@@ -43,7 +43,7 @@ def book_list(request):
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def book_detail(request , id):
   # checking if valid request
   try:
@@ -55,7 +55,11 @@ def book_detail(request , id):
     serializer = BooksSerializer(book)
     return Response(serializer.data)
   elif request.method == 'POST':
-    pass
+    serializer = BooksSerializer(book, data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   elif request.method == 'PUT':
     serializer = BooksSerializer(book, data=request.data)
     if serializer.is_valid():
