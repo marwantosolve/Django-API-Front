@@ -1,0 +1,18 @@
+{% extends 'myapp/index.html' %}
+<!--  -->
+{% block title %} GET {% endblock %}
+<!--  -->
+{% block content %}
+<body>
+  <div id="book"></div>
+</body>
+<script>
+  fetch("http://127.0.0.1:8000/books/")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((book) => {
+        document.getElementById("book").innerHTML += `<p>${book.name}</p>`;
+      });
+    });
+</script>
+{% endblock %}

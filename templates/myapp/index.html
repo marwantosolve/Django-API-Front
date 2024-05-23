@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <title>{% block title %}Document{% endblock %}</title>
+  </head>
+  <body>
+    <!-- start nav bar -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'get' %}">GET</a></li>
+          <li><a href="{% url 'post' %}">POST</a></li>
+          <li><a href="{% url 'put' %}">PUT</a></li>
+          <li><a href="{% url 'delete' %}">DELETE</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="books-content">
+      {% block content %}
+      <!-- Content will be injected here -->
+      {% endblock %}
+    </div>
+  </body>
+</html>
